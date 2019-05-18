@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
       super(props);
 
-      this.state = { 
+      this.state = {
         items: [
           {
             value: 'Scale Mount Everest',
@@ -169,7 +169,7 @@ class App extends Component {
 
   render() {
       const { items } = this.state;
-      console.log(this.state);
+      // console.log(this.state);
 
       let hasItems = !(!Array.isArray(items) || !items.length);
       let completedItemsCount = items.reduce((n, item) => {
@@ -180,8 +180,8 @@ class App extends Component {
           <div className="App">
               <h1>Todo List</h1>
               <div className="add-task-container">
-                <input type="text" placeholder="Start typing to add a task.." onChange={this.handleChange} value={this.state.value}></input>
-                <button onClick={this.handleAddItem} className="btn-floating waves-effect waves-light red">
+                <input id="task-item" type="text" placeholder="Add a task..." onChange={this.handleChange} value={this.state.value}></input>
+                <button id="add-task" onClick={this.handleAddItem} className="btn-floating waves-effect waves-light red">
                   <i className="material-icons">add</i>
                 </button>
               </div>
@@ -215,12 +215,12 @@ class App extends Component {
                 </table> : <div className="no-items">You have no items</div>               
               }
               <div className="actions-section">
-                <button onClick={() => this.handleSortByName()} className="waves-effect waves-light btn-small">Sort by Name</button>
-                <button onClick={() => this.handleSortByPriority()} className="waves-effect waves-light btn-small">Sort by Priority</button>
+                <button id="sort-by-name" onClick={() => this.handleSortByName()} className="waves-effect waves-light btn-small">Sort by Name</button>
+                <button id="sort-by-priority" onClick={() => this.handleSortByPriority()} className="waves-effect waves-light btn-small">Sort by Priority</button>
               </div>
               <div className="summary-section">
-                <p>Number of Tasks:{this.state.items.length}</p>
-                <p>Completed Tasks:{completedItemsCount}</p>
+                <p>Number of Tasks: {this.state.items.length}</p>
+                <p>Completed Tasks: {completedItemsCount}</p>
               </div>
           </div>
       );

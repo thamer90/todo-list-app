@@ -5,9 +5,9 @@ const Item = (props, index) => {
     const priorityOptions = ['Low', 'Medium', 'High'];
 
     let status = props.completed ? 'Completed' : 'Pending';
-    let statusButton = props.completed?
-        <button onClick={props.updateStatus} className="waves-effect waves-light btn-small red"><i className="material-icons">close</i></button>
-        : <button onClick={props.updateStatus} className="waves-effect waves-light btn-small green"><i className="material-icons">check</i></button>;
+    let statusButton = props.completed ?
+        <button id="set-pending" onClick={props.updateStatus} className="waves-effect waves-light btn-small red"><i className="material-icons">close</i></button>
+        : <button id="set-complete" onClick={props.updateStatus} className="waves-effect waves-light btn-small green"><i className="material-icons">check</i></button>;
 
     return (
         <tr index={index} className="item">
@@ -15,7 +15,7 @@ const Item = (props, index) => {
             <td>{props.priority}</td>
             <td>{status}</td>
             <td>
-                <select value={props.priority} onChange={props.updatePriority}>
+                <select id="priority-select" value={props.priority} onChange={props.updatePriority}>
                     {
                         priorityOptions.map((option, index) => (
                             <option 
@@ -29,7 +29,7 @@ const Item = (props, index) => {
             </td>
             <td>
                 {statusButton}
-                <button onClick={props.deleteItem} className="waves-effect waves-light btn-small grey"><i className="material-icons">delete</i></button>               
+                <button id="delete-item" onClick={props.deleteItem} className="waves-effect waves-light btn-small grey"><i className="material-icons">delete</i></button>               
             </td>
         </tr>
     );
