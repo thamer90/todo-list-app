@@ -13,7 +13,7 @@ Install all npm packages, run:
 Start the web server, run:
 >`> npm start`
 
-Access the site at https://localhost:3333 while running.
+Access the site at https://localhost:3000 while running.
 
 ## Test
 >`> npm run test`
