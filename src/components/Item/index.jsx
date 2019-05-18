@@ -38,7 +38,6 @@ const Item = (props, index) => {
 Item.propTypes = {
     value: PropTypes.string,
     priority: PropTypes.string,
-    selectedItem: PropTypes.string,
     completed: PropTypes.bool,
     updateStatus: PropTypes.func.isRequired,
     updatePriority: PropTypes.func.isRequired,
