@@ -67,8 +67,12 @@ class App extends Component {
   // Delete an item
   handleDeleteItem(index) {
     this.setState(state => ({
-      items: state.items.filter(function(item) { 
-        return item.value !== state.items[index].value
+      items: state.items.filter((item, id) => {
+        if (id === index) {
+          return item.value !== state.items[index].value
+        }
+
+        return true;
       })
     }));
   }
@@ -79,7 +83,7 @@ class App extends Component {
 
     this.setState({
       items: items.map((item, id) => {
-        if (id === index){
+        if (id === index) {
           return Object.assign({}, item, {
             priority: event.target.value,
           })
@@ -87,7 +91,7 @@ class App extends Component {
           return item;
         }
       })
-    })  
+    })
   }
 
   // Update item status
@@ -96,7 +100,7 @@ class App extends Component {
 
     this.setState({
       items: items.map((item, id) => {
-        if (id === index){
+        if (id === index) {
           return Object.assign({}, item, {
             completed: !item.completed,
           })
@@ -104,7 +108,7 @@ class App extends Component {
           return item;
         }
       })
-    })  
+    })
   }
 
   // Sort list by name
@@ -138,7 +142,7 @@ class App extends Component {
     let items = [...this.state.items].sort((a, b) => {
         let p1, p2;
         
-        priorityOptions.forEach(function(row, index){
+        priorityOptions.forEach((row, index) => {
         	if (a.priority === row) p1 = index;
           if(b.priority === row) p2 = index;
         })
@@ -167,8 +171,8 @@ class App extends Component {
       const { items } = this.state;
       console.log(this.state);
 
-      let hasItems = items !== undefined || items.length > 0;
-      let completedItemsCount = items.reduce(function (n, item) {
+      let hasItems = !(!Array.isArray(items) || !items.length);
+      let completedItemsCount = items.reduce((n, item) => {
         return n + +(item.completed === true);
       }, 0);
     
@@ -182,7 +186,7 @@ class App extends Component {
                 </button>
               </div>
               {
-                hasItems &&
+                hasItems ?
                 <table className="striped">
                   <thead>
                     <tr>
@@ -208,7 +212,7 @@ class App extends Component {
                       ))
                     }
                   </tbody>
-                </table>                
+                </table> : <div className="no-items">You have no items</div>               
               }
               <div className="actions-section">
                 <button onClick={() => this.handleSortByName()} className="waves-effect waves-light btn-small">Sort by Name</button>

@@ -65,11 +65,16 @@ select {
   margin-top: 25px;
 }
 
-.action-section .waves-effect {
-  margin: 0 0 6px;
+.actions-section .waves-effect {
+  margin: 0 6px 0 0;
 }
 
 .summary-section {
   text-align: left;
+  font-size: 21px;
+}
+
+.no-items {
+  padding: 20px;
   font-size: 21px;
 }
