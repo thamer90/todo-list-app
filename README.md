@@ -16,7 +16,7 @@ Start the web server, run:
 Access the site at https://localhost:3333 while running.
 
 ## Test
->`> npm run test:debug`
+>`> npm run test`
 
 ## Build
 >`> npm run build`
