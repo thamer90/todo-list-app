@@ -4,8 +4,7 @@ import App from './App';
 
 describe('App', () => {
   let Component;
-
-  describe('App', () => {
+  
     beforeEach(() => {
         Component = mount(
           <App />
@@ -103,5 +102,4 @@ describe('App', () => {
       Component.find('.striped .item').at(0).find('#priority-select').prop('onChange')({target: { value: 'Low' }});
       expect(Component.instance().state.items[0].priority).toBe('Low');      
     });
-  });
 });
